@@ -1,216 +1,209 @@
-# CivicPulse AI 🛡️
-> **Every Report Matters. Every Hazard Counts.**
-> *AI for Better Living & Smarter Communities — Autonomous Multimodal Civic Hazard Triage*
+# CivicPulse AI 🚦
+### AI-Powered Citizen Grievance & Hazard Intelligence Platform
 
-[![Streamlit](https://img.shields.io/badge/Framework-Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit)](https://streamlit.io/)
-[![Google Gemini](https://img.shields.io/badge/AI-Google%20Gemini%20Multimodal-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev/)
-[![Python](https://img.shields.io/badge/Language-Python%203.11+-3776AB?style=for-the-badge&logo=python)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-teal?style=for-the-badge)](#)
+**CivicPulse AI** is an AI-powered civic intelligence platform designed to help communities identify, understand, and prioritize local infrastructure hazards. By combining image-based analysis with citizen-reported information, CivicPulse transforms road-hazard reports into structured, actionable civic tickets.
+
+Built for **AI for Better Living & Smarter Communities**, CivicPulse aims to make civic issue reporting more intelligent, transparent, and efficient.
 
 ---
 
-## 📌 Problem Statement
-Citizen hazard reports—such as exposed electrical cables, deep arterial road craters, overflowing refuse, or ruptured municipal water mains—frequently arrive as unstructured messages with vague descriptions. 
+## 🌍 The Problem
 
-Critical hazards (e.g., exposed high-voltage wiring after storms) get buried in the same queue as routine maintenance requests. Manual triage causes dangerous response delays, dispatch to wrong municipal departments, and leaves citizens in the dark.
+Potholes, damaged roads, overflowing waste, broken streetlights, and other public infrastructure issues can affect safety and quality of life. Traditional reporting processes may involve incomplete descriptions, inconsistent categorization, and difficulty prioritizing urgent complaints.
 
-## 💡 Solution & Innovation
-**CivicPulse AI** is an intelligent multimodal civic intake and dispatch command center:
-1. **Multimodal Visual Evidence Analysis**: Takes raw citizen photos, processes physical cues using **Google Gemini Multimodal AI**, and extracts factual visible evidence.
-2. **Deterministic Schema Enforcement**: Returns structured JSON determining category, severity level, responsible municipal department, and an immediate operational action plan.
-3. **Safety-First Alerting**: Instantly identifies life-threatening hazards (e.g. electrical arcing, collapsed structural covers) and advises citizens to keep clear while providing escalation guidelines.
-4. **Operations Command Center & Hotspot Detection**: Visualizes real-time incident trends across wards, detects recurring municipal fault clusters, and allows dispatchers to manage statuses in an interactive priority queue.
-5. **Zero-Lockout Demo Mode**: Ensures 100% demo resilience during hackathon evaluations even if API keys are missing or offline.
+## 💡 Our Solution
+
+CivicPulse AI uses multimodal AI to analyze submitted hazard images and optional descriptions, organize reports into structured tickets, and help users identify which issues may need attention first.
+
+**From a citizen's report to an AI-assisted civic action plan.**
 
 ---
 
-## 🚀 Key Features
+## ✨ Key Features
 
-| Feature | Description |
-| :--- | :--- |
-| **Multimodal Photo Analysis** | Analyzes uploaded images (JPG, PNG) with automatic aspect-preserving compression using Pillow. |
-| **Intelligent Severity Rating** | Ranks hazards into **Critical**, **High**, **Moderate**, and **Low** with explicit rationale. |
-| **Department Routing** | Automatically maps issues to Public Works, Electricity Boards, Water & Sewerage, or Sanitation. |
-| **Auditability & Uncertainty Bounds** | Highlights what the model *observed* vs what *cannot be determined optically* (e.g. live voltage). |
-| **Priority Operations Queue** | Dynamic, filterable triage desk sorted by criticality first with live status controls. |
-| **Interactive Analytics** | Donut charts, category distribution bars, and departmental workload allocations via Plotly. |
-| **Locality Hazard Clustering** | Groups incidents by citizen locality to detect recurring infrastructure hotspots. |
-| **Responsible AI Standards** | Strictly adheres to decision-support boundaries without inventing fake GPS or claiming false dispatches. |
+- **📸 Image-Based Hazard Analysis** — Upload an image of a civic issue for AI-assisted visual assessment.
+- **🤖 Multimodal AI Intelligence** — Use Google's Gemini model to interpret visual evidence and optional text descriptions.
+- **🎫 Structured Grievance Tickets** — Organize reports with a title, description, category, severity, and supporting evidence.
+- **🚨 Severity Classification** — Help prioritize issues based on their potential impact and safety concerns.
+- **🏢 Department Recommendations** — Suggest the relevant civic department and recommended next action.
+- **⏱️ Suggested Response Time** — Provide an AI-generated suggested service-level target for review.
+- **📊 Civic Command Dashboard** — Present reported issues in an organized dashboard and priority queue.
+- **🖼️ Sample Hazard Images** — Explore the interface using included sample assets.
+- **🛡️ Human Review Awareness** — Highlight uncertainty and the need for human verification when appropriate.
+
+> **Important:** AI-generated classifications and recommendations are decision-support suggestions, not official municipal decisions. CivicPulse does not claim that a complaint has been dispatched or resolved unless an actual integration confirms it.
 
 ---
 
-## 🏗️ System Architecture
+## 🧠 How It Works
 
-```mermaid
-flowchart TD
-    A[Citizen Photo & Locality] --> B[Pillow Image Pre-processor]
-    B -->|Optimized JPEG Payload| C{Gemini Multimodal Engine}
-    C -->|google-genai SDK| D[Gemini 2.5 Flash]
-    C -->|Fallback / Offline| E[Local Triage Simulator]
-    D --> F[Structured JSON Schema Validation]
-    E --> F
-    F --> G[Safety Alert Engine]
-    G --> H[Priority Triage Queue]
-    H --> I[Operations Dashboard & Plotly Visualizers]
-    H --> J[Hotspot Clustering & Locality Pulse]
-```
+1. **Report:** Upload an image of a suspected civic hazard and optionally provide a description and location.
+2. **Analyze:** The configured Gemini model examines the available visual and textual information.
+3. **Classify:** The system generates a structured report containing the issue category, severity, and explanation.
+4. **Recommend:** CivicPulse suggests a relevant department and potential next action.
+5. **Prioritize:** Review the resulting ticket in the dashboard and determine whether human verification is needed.
 
 ---
 
 ## 🛠️ Technology Stack
-- **Frontend & App Framework**: [Streamlit](https://streamlit.io/) (with custom deep navy glassmorphism CSS)
-- **Multimodal AI**: [Google Gen AI Python SDK (`google-genai`)](https://github.com/googleapis/python-genai) with Gemini Multimodal Models
-- **Visualization**: [Plotly Express & Graph Objects](https://plotly.com/python/)
-- **Data Engineering**: [Pandas](https://pandas.pydata.org/)
-- **Image Processing**: [Pillow (PIL)](https://python-pillow.org/)
-- **Schema Validation**: [Pydantic v2](https://docs.pydantic.dev/)
+
+| Technology | Purpose |
+|---|---|
+| Python | Core application logic |
+| Streamlit | Interactive web application and dashboard |
+| Google Gemini API | Multimodal AI analysis |
+| Google Gen AI SDK | Communication with Gemini |
+| Pillow / image-processing libraries | Image handling, where configured |
+| Git & GitHub | Version control and project hosting |
+| Streamlit Community Cloud | Potential deployment platform |
+
+*The final stack depends on the packages actually used in the application.*
 
 ---
 
-## 💻 Local Installation
+## 🏗️ Project Structure
+
+```text
+CivicPulse/
+├── app.py                  # Main Streamlit application
+├── requirements.txt        # Python dependencies
+├── README.md               # Project documentation
+├── .gitignore              # Excluded files and secrets
+├── .streamlit/
+│   ├── config.toml         # Streamlit configuration
+│   └── secrets.toml        # Local secrets (never commit)
+└── assets/
+    ├── bg_backdrop.jpg
+    ├── hero_banner.jpg
+    ├── road_hazard.jpg
+    └── sample_pothole.jpg
+```
+
+The `secrets.toml` file should exist locally only when needed and must not be committed to GitHub.
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.10+ (Recommended: Python 3.11, 3.12, or 3.13)
+
+- Python 3.10 or a compatible version supported by your dependencies
 - Git
+- A Google Gemini API key for live AI analysis
+- Internet access for API-powered analysis
 
-### 1. Clone the Repository
+### 1. Clone the repository
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/CivicPulse-AI.git
-cd CivicPulse-AI
+git clone https://github.com/rahul20051122/civicpulse.git
+cd civicpulse
 ```
 
-### 2. Create and Activate a Virtual Environment (Optional but recommended)
-```bash
-# Windows PowerShell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
+### 2. Create a virtual environment
 
-# Linux / macOS
-python3 -m venv venv
-source venv/bin/activate
+**Windows PowerShell**
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 ```
 
-### 3. Install Dependencies
+If PowerShell blocks activation, use Command Prompt or follow your Python environment's activation instructions.
+
+### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure Gemini API Key
-You can provide your Google Gemini API key in any of three ways:
+### 4. Configure the Gemini API key
 
-#### Option A: Streamlit Secrets (Recommended)
-Copy the template and edit:
-```bash
-# Windows PowerShell
-copy .streamlit\secrets.toml.example .streamlit\secrets.toml
+Create `.streamlit/secrets.toml` locally and add:
 
-# Linux / macOS
-cp .streamlit/secrets.toml.example .streamlit/secrets.toml
-```
-Open `.streamlit/secrets.toml` and set:
 ```toml
-GEMINI_API_KEY = "AIzaSyYourActualApiKeyHere"
+GOOGLE_API_KEY = "YOUR_GEMINI_API_KEY"
 ```
 
-#### Option B: Environment Variable
-```bash
-# Windows PowerShell
-$env:GEMINI_API_KEY="AIzaSyYourActualApiKeyHere"
+Replace the placeholder with your own API key.
 
-# Linux / macOS
-export GEMINI_API_KEY="AIzaSyYourActualApiKeyHere"
-```
+**Security:** Never publish your real API key in source code, screenshots, commits, or README files. Configure the same secret securely in your deployment platform.
 
-#### Option C: In-App UI Override
-You can enter your API key directly in the sidebar password box at runtime.
+### 5. Run the application
 
----
-
-## ⚡ Running the Application
-
-Launch the Streamlit app:
 ```bash
 streamlit run app.py
 ```
-Open your browser to: `http://localhost:8501`
 
----
+Open the local URL displayed in the terminal, usually:
 
-## 🛡️ Demo Mode (No API Key Required)
-If no Gemini API key is provided, CivicPulse AI will **automatically run in DEMO MODE**:
-- Clearly labeled simulated responses evaluate your input and category cues.
-- Includes pre-seeded municipal reports showcasing the Operations Command Center, Priority Queue, and Hotspots immediately.
-- Zero crashes, zero rate-limit blocks during live presentations.
-
----
-
-## 🧪 Testing & Verification
-
-A dedicated automated verification test suite is included in `tests/test_civicpulse.py`. Run tests using:
-```bash
-python tests/test_civicpulse.py
+```text
+http://localhost:8501
 ```
 
-### Test Coverage:
-1. **Module Import Verification**: Verifies `streamlit`, `pandas`, `plotly`, `PIL`, `google.genai`.
-2. **Schema & Data Class Integrity**: Confirms `CivicReport` serializes correctly and adheres to category and severity constraints.
-3. **Pillow Resizing**: Verifies image resizing downscales large photos while maintaining aspect ratio.
-4. **Safety Filter**: Confirms immediate electrical/danger warnings fire for critical triggers.
-5. **Fallback Simulation**: Validates that offline demo mode generates conforming schema objects without API keys.
+---
+
+## 🔐 Security & Responsible AI
+
+- Keep API keys and credentials out of version control.
+- Validate uploaded image types and handle API errors safely.
+- Treat AI classifications as recommendations rather than verified facts.
+- Avoid exposing sensitive personal information in reports.
+- Use human review for uncertain or potentially dangerous cases.
+- Do not imply official government affiliation, dispatch, or resolution without a verified integration.
 
 ---
 
-## 🌐 Live Deployment to Streamlit Community Cloud
+## 🎯 Potential Applications
 
-Deploying CivicPulse AI takes less than 3 minutes:
+- Road damage and pothole reporting
+- Streetlight and public-infrastructure fault reporting
+- Waste accumulation and sanitation monitoring
+- Community safety observations
+- Civic issue prioritization and analytics
 
-1. **Push to GitHub**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial CivicPulse AI Release"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/CivicPulse-AI.git
-   git push -u origin main
-   ```
-2. **Open Streamlit Cloud**:
-   - Go to [share.streamlit.io](https://share.streamlit.io) and log in with GitHub.
-3. **Deploy New App**:
-   - Click **New app**.
-   - Select your repository: `YOUR_USERNAME/CivicPulse-AI`.
-   - Branch: `main`.
-   - Main file path: `app.py`.
-4. **Configure Secrets**:
-   - Click **Advanced settings...** -> **Secrets**.
-   - Paste:
-     ```toml
-     GEMINI_API_KEY = "AIzaSyYourActualApiKeyHere"
-     ```
-   - Click **Save**.
-5. **Launch**:
-   - Click **Deploy!**
-
-> **Live Demo URL:** `https://civicpulse-ai.streamlit.app` *(Placeholder - update with your deployed URL)*
-
----
-
-## ⚖️ Responsible AI & Ethical Boundaries
-
-CivicPulse AI was engineered with strict adherence to ethical and responsible civic technology practices:
-- **Decision Support, Not Final Determination**: All AI outputs assist human operators; they do not replace qualified municipal engineers or building inspectors.
-- **No Fictitious Dispatches**: The app never pretends to dispatch emergency crews or emergency vehicles without verified API integration.
-- **Optical Uncertainty Transparency**: Each report lists technical uncertainties—stating clearly that things like *live electrical voltage* or *underground pipe pressure* cannot be confirmed by camera alone.
-- **Privacy & Location Ethics**: The platform does not attempt to extrapolate private personal data or pinpoint exact residential boundaries from photos.
+These are potential applications; support depends on the implemented model prompts and application workflow.
 
 ---
 
 ## 🔮 Future Enhancements
-- [ ] Integration with municipal Open311 APIs for automated dispatch synchronization.
-- [ ] Multilingual speech-to-text intake for non-English speaking citizens.
-- [ ] Satellite & GIS layer overlay with open street map (OSM) ward geometries.
-- [ ] Duplicate incident clustering using vector embeddings across nearby coordinates.
+
+- Interactive geographic hazard mapping
+- GPS-assisted report location and duplicate detection
+- Multilingual citizen reporting
+- Real municipal department integrations
+- Ticket status tracking and verified resolution updates
+- Trend analysis and neighborhood-level insights
+- Accessibility improvements and mobile-friendly reporting
+- Auditable severity rules and human-feedback workflows
 
 ---
 
-## 📄 License
-Released under the [MIT License](LICENSE). Built for the **AI for Better Living & Smarter Communities** Hackathon.
+## 🧪 Testing & Validation
+
+Before production deployment, validate the system with diverse hazard images and descriptions. Check classification accuracy, severity consistency, API failure handling, uncertain outputs, and whether the recommendations are understandable and actionable.
+
+Any accuracy, response-time, or impact metrics should be published only after they have been measured and verified.
+
+---
+
+## 👨‍💻 Project Information
+
+**Project:** CivicPulse AI  
+**Domain:** Artificial Intelligence · Smart Communities · Civic Technology  
+**Challenge Theme:** AI for Better Living & Smarter Communities  
+**Developer:** Koniki Rahul Kumar  
+**GitHub Repository:** [rahul20051122/civicpulse](https://github.com/rahul20051122/civicpulse)
+
+**Live Demo:** Add your verified deployment URL here after publishing the application.
+
+---
+
+## 🌱 Vision
+
+We envision communities where civic problems are easier to report, easier to understand, and easier to prioritize. CivicPulse AI explores how multimodal artificial intelligence can support smarter civic workflows while keeping transparency, human judgment, and public safety at the center.
+
+**CivicPulse AI — Turning civic reports into actionable intelligence.**
+
+---
+
+*Built as an AI-for-good project exploring practical applications of multimodal AI for smarter, safer communities.*x
