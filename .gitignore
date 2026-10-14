@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Secrets & Environment
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets.toml
+
+# Streamlit
+.streamlit/cache/
+
+# Testing & Linting
+.pytest_cache/
+.coverage
+htmlcov/
+.oxlintrc.json
+
+# Node (legacy frontend artifacts)
+node_modules/
+package-lock.json
+
+# Operating System
+.DS_Store
+Thumbs.db
